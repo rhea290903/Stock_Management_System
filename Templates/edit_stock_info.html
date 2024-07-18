@@ -1,0 +1,44 @@
+<!-- edit_stock_info.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Stock Info</title>
+    <!-- Add your CSS link if needed -->
+</head>
+<body>
+    <div class="container">
+        <h1>Edit Stock Information</h1>
+        <form method="post" action="{{ url_for('edit_stock_info') }}">
+            <label for="action">Action:</label>
+            <select name="action" id="action">
+                <option value="add">Add</option>
+                <option value="update">Update</option>
+                <option value="delete">Delete</option>
+            </select>
+        
+            <label for="stock_id">Stock ID:</label>
+            <input type="text" name="stock_id" id="stock_id">
+            <label for="company_id">company_id:</label>
+            <input type="text" name="company_id" id="company_id">
+            <label for="volume">volume:</label>
+            <input type="text" name="volume" id="volume">
+            <label for="low_price">low_price:</label>
+            <input type="text" name="low_price" id="low_price">
+            <label for="high_price">high_price:</label>
+            <input type="text" name="high_price" id="high_price">
+            <label for="closing_price">closing_price:</label>
+            <input type="text" name="closing_price" id="closing_price">
+            <label for="opening_price">opening_price:</label>
+            <input type="text" name="opening_price" id="opening_price">
+            <label for="date">date:</label>
+            <input type="text" name="date" id="date">
+        
+            <!-- Add input fields for company_id, volume, low_price, high_price, closing_price, opening_price, and date -->
+        
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

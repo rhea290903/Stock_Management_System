@@ -1,0 +1,35 @@
+<!-- edit_company_info.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Company Info</title>
+    <!-- Add your CSS link if needed -->
+</head>
+<body>
+    <div class="container">
+        <h1>Edit Company Information</h1>
+        <form method="post" action="{{ url_for('edit_company_info') }}">
+            <label for="action">Action:</label>
+            <select name="action" id="action">
+                <option value="add">Add</option>
+                <option value="update">Update</option>
+                <option value="delete">Delete</option>
+            </select>
+        
+            <label for="company_id">Company ID:</label>
+            <input type="text" name="company_id" id="company_id">
+            <label for="company_name">Company name:</label>
+            <input type="text" name="company_name" id="company_name">
+            <label for="industry">industry:</label>
+            <input type="text" name="industry" id="industry">
+            <label for="sector">sector:</label>
+            <input type="text" name="sector" id="sector">
+        
+            <!-- Add input fields for company_name, sector, and industry -->
+        
+            <button type="submit">Submit</button>
+    </div>
+</body>
+</html>

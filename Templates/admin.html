@@ -1,0 +1,141 @@
+<!-- admin.html -->
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Admin Page</h1>
+
+        
+        <h2>Companies Table</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Company ID</th>
+                    <th>Name</th>
+                    <th>Sector</th>
+                    <th>Industry</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for company in data_companies %}
+                    <tr>
+                        <td>{{ company.company_id }}</td>
+                        <td>{{ company.name }}</td>
+                        <td>{{ company.sector }}</td>
+                        <td>{{ company.industry }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html> -->
+<!-- admin.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Add your CSS link if needed -->
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome Admin!</h1>
+
+        <!-- Buttons to toggle between tables -->
+        <button onclick="showTable('companies')">Show Companies</button>
+        <button onclick="showTable('stocks')">Show Stocks</button>
+        <button onclick="goToEditCompany()">Edit Company Info</button>
+        <button onclick="goToEditStock()">Edit Stock Info</button>
+
+        <a href="{{ url_for('logout') }}">Sign Out</a>
+        <!-- Default Table (Companies) -->
+        <div id="companiesTable">
+            <h2>Companies Table</h2>
+            <table>
+                <!-- Add your table headers -->
+                <thead>
+                    <tr>
+                        <th>Company ID</th>
+                        <th>Name</th>
+                        <th>Sector</th>
+                        <th>Industry</th>
+                    </tr>
+                </thead>
+                <!-- Loop through data_companies to display rows -->
+                <tbody>
+                    {% for company in data_companies %}
+                        <tr>
+                            <td>{{ company.company_id }}</td>
+                            <td>{{ company.name }}</td>
+                            <td>{{ company.sector }}</td>
+                            <td>{{ company.industry }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Placeholder for Stocks Table (initially hidden) -->
+        <div id="stocksTable" style="display: none;">
+            <h2>Stocks Table</h2>
+                <table>
+                    <thread>
+                        <tr>
+                            <th>Stock ID</th>
+                            <th>Company ID</th>
+                            <th>Volume</th>
+                            <th>Low Price</th>
+                            <th>High Price</th>
+                            <th>Closing Price</th>
+                            <th>Opening Price</th>
+                            <th>Date</th>
+                        </tr>
+                    </thread>
+                    {% for stock in data_stocks %}
+                        <tr>
+                            <td>{{ stock.stock_id }}</td>
+                            <td>{{ stock.company_id }}</td>
+                            <td>{{ stock.volume }}</td>
+                            <td>{{ stock.low_price }}</td>
+                            <td>{{ stock.high_price }}</td>
+                            <td>{{ stock.closing_price }}</td>
+                            <td>{{ stock.opening_price }}</td>
+                            <td>{{ stock.date }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            <!-- Add your stocks table structure here -->
+        </div>
+    </div>
+
+    <script>
+        function showTable(tableName) {
+            // Hide all tables
+            document.querySelectorAll('div[id$="Table"]').forEach(function(table) {
+                table.style.display = 'none';
+            });
+
+            // Show the selected table
+            document.getElementById(tableName + 'Table').style.display = 'block';
+        }
+        function goToEditCompany() {
+            window.location.href = "{{ url_for('edit_company_info') }}";
+        }
+    
+        // Function to redirect to the Edit Stock Info page
+        function goToEditStock() {
+            window.location.href = "{{ url_for('edit_stock_info') }}";
+        }
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,59 @@
+<!-- update_order.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Orders</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Update Orders</h1>
+        
+        <form method="post" action="{{ url_for('update_orders') }}">
+            <!-- Order ID (you may want to hide it for updates) -->
+            <label for="action">Select Action:</label>
+            <select name="action">
+                <option value="add">Add</option>
+                <option value="update">Update</option>
+                <!-- Add more options as needed -->
+            </select>
+            <label for="order_id">Order ID:</label>
+            <input type="text" name="order_id" required>
+            
+            <!-- User ID -->
+            <label for="user_id">User ID:</label>
+            <input type="text" name="user_id" required>
+            
+            <!-- Stock ID -->
+            <label for="stock_id">Stock ID:</label>
+            <input type="text" name="stock_id" required>
+            
+            <!-- Company ID -->
+            <label for="company_id">Company ID:</label>
+            <input type="text" name="company_id" required>
+            
+            <!-- Date -->
+            <label for="date">Date:</label>
+            <input type="text" name="date" required>
+            
+            <!-- Price -->
+            <label for="price">Price:</label>
+            <input type="text" name="price" required>
+            
+            <!-- Quantity -->
+            <label for="quantity">Quantity:</label>
+            <input type="text" name="quantity" required>
+
+            <label for="portfolio_name">portfolio_name:</label>
+            <input type="portfolio_name" name="portfolio_name" required>
+
+       
+
+            <!-- Submit buttons -->
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

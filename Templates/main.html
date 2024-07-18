@@ -1,0 +1,218 @@
+<!-- main.html -->
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+<body>
+    <div class="container">
+        <h1>Main Page</h1>
+
+        <h2>Stocks Table</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Stock ID</th>
+                    <th>Company ID</th>
+                    <th>Volume</th>
+                    <th>Low Price</th>
+                    <th>High Price</th>
+                    <th>Closing Price</th>
+                    <th>Opening Price</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in data_stocks %}
+                    <tr>
+                        <td>{{ row.stock_id }}</td>
+                        <td>{{ row.company_id }}</td>
+                        <td>{{ row.volume }}</td>
+                        <td>{{ row.low_price }}</td>
+                        <td>{{ row.high_price }}</td>
+                        <td>{{ row.closing_price }}</td>
+                        <td>{{ row.opening_price }}</td>
+                        <td>{{ row.date }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>-->
+<!-- main.html -->
+<!-- main.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <div class="dropdown">
+                <button class="dropbtn">Options &#9660;</button>
+                <div class="dropdown-content">
+                    <a href="#" onclick="showTable('stocks')">Stocks</a>
+                    <a href="#" onclick="showTable('user_portfolio')">User Portfolio</a>
+                    <a href="#" onclick="showTable('portfolio_holdings')">Portfolio Holdings</a>
+                    <a href="#" onclick="showTable('orders')">Orders</a>
+                    
+                    <!-- Add this button where you want it in your main.html -->
+                   
+
+
+                    <!-- Add more options for other tables -->
+                </div>
+            </div>
+            <a href="{{ url_for('logout') }}">Sign Out</a>
+            <a href="{{ url_for('update_orders_page') }}" class="button">Update Orders</a>
+        </div>
+
+        <div class="content">
+            <h1>Main Page</h1>
+
+            <!-- Default Table (Stocks) -->
+            <div id="stocksTable">
+                <h2>Stocks Table</h2>
+                <table>
+                    <thread>
+                        <tr>
+                            <th>Stock ID</th>
+                            <th>Company ID</th>
+                            <th>Volume</th>
+                            <th>Low Price</th>
+                            <th>High Price</th>
+                            <th>Closing Price</th>
+                            <th>Opening Price</th>
+                            <th>Date</th>
+                        </tr>
+                    </thread>
+                    {% for stock in data_stocks %}
+                        <tr>
+                            <td>{{ stock.stock_id }}</td>
+                            <td>{{ stock.company_id }}</td>
+                            <td>{{ stock.volume }}</td>
+                            <td>{{ stock.low_price }}</td>
+                            <td>{{ stock.high_price }}</td>
+                            <td>{{ stock.closing_price }}</td>
+                            <td>{{ stock.opening_price }}</td>
+                            <td>{{ stock.date }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+
+            <!-- Placeholder for other tables (User Portfolio, Portfolio Holdings, Orders) -->
+            <!-- Add similar blocks for other tables -->
+            <div id="user_portfolioTable" style="display: none;">
+                <h2>User Portfolio Table</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Company ID</th>
+                            <th>Portfolio ID</th>
+                            <th>User ID</th>
+                            <th>Portfolio Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in user_portfolio %}
+                            <tr>
+                                <td>{{ row.company_id }}</td>
+                                <td>{{ row.portfolio_id }}</td>
+                                <td>{{ row.user_id }}</td>
+                                <td>{{ row.portfolio_name }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div id="portfolio_holdingsTable" style="display: none;">
+                <h2>Portfolio Holdings Table</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Holding ID</th>
+                            <th>Portfolio ID</th>
+                            <th>Company ID</th>
+                            <th>Quantity</th>
+                            <th>Avg Buy Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in portfolio_holdings %}
+                            <tr>
+                                <td>{{ row.holding_id }}</td>
+                                <td>{{ row.portfolio_id }}</td>
+                                <td>{{ row.company_id }}</td>
+                                <td>{{ row.quantity }}</td>
+                                <td>{{ row.avg_buy_price }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            
+            
+            
+            
+            
+            
+           
+            
+            
+            
+            
+            
+            <div id="ordersTable" style="display: none;">
+                <h2>Orders Table</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>order ID</th>
+                            <th>User ID</th>
+                            <th>Stock ID</th>
+                            <th>Company ID</th>
+                            <th>Date</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in orders %}
+                            <tr>
+                                <td>{{ row.order_id }}</td>
+                                <td>{{ row.user_id }}</td>
+                                <td>{{ row.stock_id }}</td>
+                                <td>{{ row.company_id }}</td>
+                                <td>{{ row.date }}</td>
+                                <td>{{ row.price }}</td>
+                                <td>{{ row.quantity }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showTable(tableName) {
+            // Hide all tables
+            document.querySelectorAll('div[id$="Table"]').forEach(function(table) {
+                table.style.display = 'none';
+            });
+
+            // Show the selected table
+            document.getElementById(tableName + 'Table').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
+
