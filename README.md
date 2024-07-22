@@ -10,7 +10,7 @@ This project aims to create a Stock Management System using Flask and MySQL, int
 - **Historical Data Analysis**: Analyze historical stock data to make informed decisions.
 - **Real-time Updates**: Updates on stock prices and portfolio changes.
 - **MySQL Database**: Store user information, stock data, and transaction history.
-- 
+
 
 
 
